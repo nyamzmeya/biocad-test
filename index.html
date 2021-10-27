@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="jquery.datetimepicker.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="input">
+        <label for="inventory">Enter inventory number, guid or bims id</label>
+        <input type="text" id="inventory" required />
+        <button type="button" id="search" class="button gray">Search</button>
+      </div>
+
+      <div class="wrapper">
+        <div id="items">
+          <div
+            id="1"
+            class="item"
+            data-tooltip="Для выбора прибора нажмите на него"
+          >
+            <img src="img/scale.png" alt="img" />
+            <span class="name">
+              Аналитические весы OHAUS Adventurer <br />
+              АХ324 (B715976163)
+            </span>
+          </div>
+
+          <div id="no">Не найден</div>
+        </div>
+
+        <div class="report" id="report">
+          <div>
+            <input
+              list="periods"
+              placeholder="1 month"
+              class="periods"
+              name="periods"
+            />
+            <datalist id="periods">
+              <option value="1 month"></option>
+              <option value="2 months"></option>
+              <option value="3 months"></option>
+            </datalist>
+          </div>
+          <div>
+            <div class="radio">
+              <input
+                type="radio"
+                name="type"
+                value="Calibration"
+                checked
+                id="radio-1"
+              />
+              <label for="radio-1">Calibration</label>
+            </div>
+
+            <div class="radio">
+              <input type="radio" name="type" value="Measuring" id="radio-2" />
+              <label for="radio-2">Measuring</label>
+            </div>
+
+            <div class="radio">
+              <input type="radio" name="type" value="Using" id="radio-3" />
+              <label for="radio-3">Using</label>
+            </div>
+          </div>
+
+          <button
+            id="generate"
+            class="button blue"
+            data-toggle="modal"
+            data-target="#modal"
+          >
+            Generate report
+          </button>
+        </div>
+
+        <div id="info" class="info"></div>
+      </div>
+
+      <div class="modal fade" id="modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalLabel"></h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="datetimepicker">Date</label>
+                <input type="text" id="datetimepicker" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="slope">Slope, %</label>
+                <input
+                  type="number"
+                  id="slope"
+                  min="0"
+                  max="100"
+                  class="form-control"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="offset">Offset, mV</label>
+                <input type="number" id="offset" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" required class="form-control" />
+              </div>
+
+              <div class="alert alert-danger" role="alert" style='display: none;'>
+                Заполните все поля
+              </div>
+
+              <button class="btn btn-primary blue" id="save" type="button">
+                Save report
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reports" id="Calibration">
+        <span>Calibration report</span>
+        <div class="measures">
+          <div>Data</div>
+          <div>Used buffer solutions</div>
+          <div>
+            Slope, % <br />
+            Norm 95-105
+          </div>
+          <div>
+            Offset, mV <br />
+            Norm ±(0-20)
+          </div>
+          <div>User</div>
+        </div>
+      </div>
+
+      <div class="reports" id="Measuring">
+        <span>Measuring report</span>
+        <div class="measures">
+          <div>Data</div>
+          <div>Used buffer solutions</div>
+          <div>
+            Slope, % <br />
+            Norm 95-105
+          </div>
+          <div>
+            Offset, mV <br />
+            Norm ±(0-20)
+          </div>
+          <div>User</div>
+        </div>
+      </div>
+
+      <div class="reports" id="Using">
+        <span>Using report</span>
+        <div class="measures">
+          <div>Data</div>
+          <div>Used buffer solutions</div>
+          <div>
+            Slope, % <br />
+            Norm 95-105
+          </div>
+          <div>
+            Offset, mV <br />
+            Norm ±(0-20)
+          </div>
+          <div>User</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="jquery.datetimepicker.full.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
